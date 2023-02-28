@@ -1,14 +1,15 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { env } from "process";
 // TODO: Add SDKs for Firebase products that you want to use
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDw9hmyRepoNS0Qb5hzejX6KYdKe2PqsfY",
-  authDomain: "familybudget-2925a.firebaseapp.com",
-  projectId: "familybudget-2925a",
-  storageBucket: "familybudget-2925a.appspot.com",
-  messagingSenderId: "309804163082",
-  appId: "1:309804163082:web:28b0e8d35bc6ab6017fff3",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
 };
 
 // Initialize Firebase
