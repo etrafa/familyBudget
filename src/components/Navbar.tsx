@@ -1,6 +1,7 @@
 const Navbar = () => {
   return (
-    <nav className="w-full h-20 bg-red-200">
+    <nav className="w-full h-16 flex justify-between items-center border-b">
+      <h2>Etem Laura</h2>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -16,7 +17,9 @@ const Navbar = () => {
         />
       </svg>
 
-      <button>Add Transaction</button>
+      <button className="w-40 h-10 bg-light-green text-sm text-white tracking-wide uppercase rounded-md hover:opacity-80">
+        Add Transaction
+      </button>
     </nav>
   );
 };
