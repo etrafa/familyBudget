@@ -1,7 +1,7 @@
 const Sidebar = () => {
   return (
     <aside className="hidden lg:block w-24 h-screen max-w-[11rem] border-r border-gray-300 shadow-2xl">
-      <div className="text-center mt-20">
+      <div className="text-center mt-20 cursor-pointer">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -18,7 +18,7 @@ const Sidebar = () => {
         </svg>
         <p className="text-xs text-gray-400 pt-1 tracking-wide">Dashboard</p>
       </div>
-      <div className="w-full text-center mt-6">
+      <div className="w-full text-center mt-6 cursor-pointer">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -35,7 +35,7 @@ const Sidebar = () => {
         </svg>
         <p className="text-xs text-gray-400 pt-1 tracking-wide">Transactions</p>
       </div>
-      <div className="text-center mt-6">
+      <div className="text-center mt-6 cursor-pointer">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -52,7 +52,7 @@ const Sidebar = () => {
         </svg>
         <p className="text-xs text-gray-400 pt-1 tracking-wide">Budget</p>
       </div>
-      <div className="text-center mt-6">
+      <div className="text-center mt-6 cursor-pointer">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -75,7 +75,7 @@ const Sidebar = () => {
         <p className="text-xs text-gray-400 pt-1 tracking-wide">Categories</p>
       </div>
       <hr className="mt-10" />
-      <div className="text-center mt-6">
+      <div className="text-center mt-6 cursor-pointer">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -90,7 +90,6 @@ const Sidebar = () => {
             d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
           />
         </svg>
-
         <p className="text-xs text-gray-400 pt-1 tracking-wide">Sign out</p>
       </div>
     </aside>
