@@ -1,4 +1,8 @@
-const AddNewExpense = () => {
+interface AddNewExpenseProps {
+  setIsAddNewExpenseModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const AddNewExpense = ({ setIsAddNewExpenseModalOpen }: AddNewExpenseProps) => {
   return (
     <div className="w-full ml-auto fixed min-h-screen top-0 bg-black bg-opacity-75 z-50">
       <div className="absolute bg-white rounded-mds shadow top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11/12 max-w-3xl">
@@ -42,7 +46,10 @@ const AddNewExpense = () => {
           </div>
         </div>
         <div className="w-11/12 my-6 flex justify-end mx-auto">
-          <button className="w-28 h-12 bg-gray-100 text-light-green uppercase text-sm font-semibold">
+          <button
+            onClick={() => setIsAddNewExpenseModalOpen(false)}
+            className="w-28 h-12 bg-gray-100 text-light-green uppercase text-sm font-semibold"
+          >
             Cancel
           </button>
           <button className="w-28 h-12 bg-gray-100 uppercase text-sm font-semibold mx-4">

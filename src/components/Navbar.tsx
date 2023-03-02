@@ -1,4 +1,8 @@
-const Navbar = () => {
+interface NavbarProps {
+  setIsAddNewExpenseModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Navbar = ({ setIsAddNewExpenseModalOpen }: NavbarProps) => {
   return (
     <nav className="w-full h-16 flex justify-between items-center px-12 border-b shadow-xl">
       <h2>Etem Laura</h2>
@@ -18,7 +22,10 @@ const Navbar = () => {
           />
         </svg>
 
-        <button className="w-40 h-10 bg-light-green text-sm text-white tracking-wide uppercase rounded-md hover:opacity-80">
+        <button
+          onClick={() => setIsAddNewExpenseModalOpen(true)}
+          className="w-40 h-10 bg-light-green text-sm text-white tracking-wide uppercase rounded-md hover:opacity-80"
+        >
           Add Transaction
         </button>
       </div>
