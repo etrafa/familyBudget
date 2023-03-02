@@ -1,16 +1,22 @@
 import AddNewExpense from "./components/Modals/AddNewExpense";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div>
-      <div className="flex">
-        <Sidebar />
-        <Navbar />
+    <Router>
+      <div>
+        <div className="flex">
+          <Sidebar />
+          <Navbar />
+        </div>
+        {/* <AddNewExpense /> */}
       </div>
-      {/* <AddNewExpense /> */}
-    </div>
+      <Routes>
+        <Route path="/" />
+      </Routes>
+    </Router>
   );
 }
 
