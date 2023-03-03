@@ -1,15 +1,21 @@
-import { categories } from "../../categories/categories";
+import { useState } from "react";
+import {
+  expensesCategories,
+  incomeCategories,
+} from "../../categories/categories";
 
 const CategoryModal = () => {
+  const [categoryType, setCategoryType] = useState("expense");
+
   return (
     <div className="w-full ml-auto fixed min-h-screen top-0 bg-black bg-opacity-50 z-50">
       <div className="absolute bg-white rounded-md shadow top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11/12 max-w-xl">
-        <div className="my-6">
+        <div className="mt-4">
           <h2 className="ml-12 text-lg font-semibold tracking-wider">
             Select Category
           </h2>
         </div>
-        <form className="w-4/12 mx-auto block">
+        <form className="w-4/12 mt-4 mx-auto block">
           <div className="relative">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <svg
@@ -30,27 +36,67 @@ const CategoryModal = () => {
             </div>
             <input
               type="search"
-              className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-3xl bg-gray-50"
+              className="block w-full h-10 pl-10 text-sm text-gray-900 border border-gray-300 rounded-3xl bg-gray-50"
               placeholder="Search"
             />
           </div>
         </form>
-        <div className="flex justify-center gap-x-4">
-          <h4 className="ml-12 text-md font-semibold tracking-wider">
-            Expense
+        <div className="flex justify-center gap-x-20 mt-4">
+          <h4
+            onClick={() => setCategoryType("expense")}
+            className={
+              categoryType === "expense"
+                ? "text-sm underline underline-offset-8 decoration-[3px] decoration-light-green text-light-green font-medium cursor-pointer"
+                : "text-sm text-gray-400 font-medium cursor-pointer"
+            }
+          >
+            EXPENSE
           </h4>
-          <h4 className="ml-12 text-md font-semibold tracking-wider">Income</h4>
+          <h4
+            onClick={() => setCategoryType("income")}
+            className={
+              categoryType === "income"
+                ? "text-sm underline underline-offset-8 decoration-[3px] decoration-light-green text-light-green font-medium cursor-pointer"
+                : "text-sm text-gray-400 font-medium cursor-pointer"
+            }
+          >
+            INCOME
+          </h4>
         </div>
-        <div className="w-full h-96 overflow-y-scroll">
+        <hr className="w-full mt-1.5" />
+        <div className="w-full h-96 overflow-y-scroll mt-4">
           <div className="w-9/12 mx-auto">
-            {categories.map((item) => {
-              return (
-                <div className="flex w-full justify-start items-center py-2 hover:bg-gray-200 cursor-pointer border-b">
-                  <img className="w-10 h-10" src={item.image} alt={item.name} />
-                  <span className="w-32 text-sm pl-4">{item.name}</span>
-                </div>
-              );
-            })}
+            {categoryType === "expense" ? (
+              <>
+                {expensesCategories.map((category) => {
+                  return (
+                    <div className="flex w-full justify-start items-center py-2 hover:bg-gray-200 cursor-pointer border-b">
+                      <img
+                        className="w-10 h-10"
+                        src={category.image}
+                        alt={category.name}
+                      />
+                      <span className="w-32 text-sm pl-4">{category.name}</span>
+                    </div>
+                  );
+                })}
+              </>
+            ) : (
+              <>
+                {incomeCategories.map((category) => {
+                  return (
+                    <div className="flex w-full justify-start items-center py-2 hover:bg-gray-200 cursor-pointer border-b">
+                      <img
+                        className="w-10 h-10"
+                        src={category.image}
+                        alt={category.name}
+                      />
+                      <span className="w-32 text-sm pl-4">{category.name}</span>
+                    </div>
+                  );
+                })}
+              </>
+            )}
           </div>
         </div>
       </div>

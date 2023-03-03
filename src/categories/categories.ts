@@ -8,8 +8,10 @@ import GasBillIcon from "../assets/categories/icon_139.png";
 import TelevisionBillIcon from "../assets/categories/icon_84.png";
 import InternetBillIcon from "../assets/categories/icon_126.png";
 import EducationIcon from "../assets/categories/icon_2.png";
+import SalaryIcon from "../assets/categories/icon_409.png";
+import OtherIncomeIcon from "../assets/categories/icon_532.png";
 
-export const categories = [
+export const expensesCategories = [
   {
     name: "Grocery",
     image: FoodBeverageIcon,
@@ -49,5 +51,16 @@ export const categories = [
   {
     name: "Education",
     image: EducationIcon,
+  },
+];
+
+export const incomeCategories = [
+  {
+    name: "Salary",
+    image: SalaryIcon,
+  },
+  {
+    name: "Other Income",
+    image: OtherIncomeIcon,
   },
 ];
