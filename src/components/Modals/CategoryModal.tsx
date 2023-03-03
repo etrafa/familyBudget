@@ -6,6 +6,7 @@ import {
 
 const CategoryModal = () => {
   const [categoryType, setCategoryType] = useState("expense");
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <div className="w-full ml-auto fixed min-h-screen top-0 bg-black bg-opacity-50 z-50">
@@ -20,7 +21,7 @@ const CategoryModal = () => {
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <svg
                 aria-hidden="true"
-                className="w-5 h-5 text-gray-500 "
+                className="w-5 h-5 text-gray-500"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -35,6 +36,7 @@ const CategoryModal = () => {
               </svg>
             </div>
             <input
+              onChange={(e) => setSearchTerm(e.target.value)}
               type="search"
               className="block w-full h-10 pl-10 text-sm text-gray-900 border border-gray-300 rounded-3xl bg-gray-50"
               placeholder="Search"
@@ -68,33 +70,55 @@ const CategoryModal = () => {
           <div className="w-9/12 mx-auto">
             {categoryType === "expense" ? (
               <>
-                {expensesCategories.map((category) => {
-                  return (
-                    <div className="flex w-full justify-start items-center py-2 hover:bg-gray-200 cursor-pointer border-b">
-                      <img
-                        className="w-10 h-10"
-                        src={category.image}
-                        alt={category.name}
-                      />
-                      <span className="w-32 text-sm pl-4">{category.name}</span>
-                    </div>
-                  );
-                })}
+                {expensesCategories
+                  .filter((val) => {
+                    if (searchTerm === "val") return val;
+                    else if (
+                      val.name.toLowerCase().includes(searchTerm.toLowerCase())
+                    ) {
+                      return val;
+                    }
+                  })
+                  .map((category) => {
+                    return (
+                      <div className="flex w-full justify-start items-center py-2 hover:bg-gray-200 cursor-pointer border-b">
+                        <img
+                          className="w-10 h-10"
+                          src={category.image}
+                          alt={category.name}
+                        />
+                        <span className="w-32 text-sm pl-4">
+                          {category.name}
+                        </span>
+                      </div>
+                    );
+                  })}
               </>
             ) : (
               <>
-                {incomeCategories.map((category) => {
-                  return (
-                    <div className="flex w-full justify-start items-center py-2 hover:bg-gray-200 cursor-pointer border-b">
-                      <img
-                        className="w-10 h-10"
-                        src={category.image}
-                        alt={category.name}
-                      />
-                      <span className="w-32 text-sm pl-4">{category.name}</span>
-                    </div>
-                  );
-                })}
+                {incomeCategories
+                  .filter((val) => {
+                    if (searchTerm === "val") return val;
+                    else if (
+                      val.name.toLowerCase().includes(searchTerm.toLowerCase())
+                    ) {
+                      return val;
+                    }
+                  })
+                  .map((category) => {
+                    return (
+                      <div className="flex w-full justify-start items-center py-2 hover:bg-gray-200 cursor-pointer border-b">
+                        <img
+                          className="w-10 h-10"
+                          src={category.image}
+                          alt={category.name}
+                        />
+                        <span className="w-32 text-sm pl-4">
+                          {category.name}
+                        </span>
+                      </div>
+                    );
+                  })}
               </>
             )}
           </div>
