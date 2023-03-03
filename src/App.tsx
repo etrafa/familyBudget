@@ -3,10 +3,13 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState } from "react";
+import CategoryModal from "./components/Modals/CategoryModal";
 
 function App() {
   const [isAddNewExpenseModalOpen, setIsAddNewExpenseModalOpen] =
-    useState(false);
+    useState(true);
+
+  const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
 
   return (
     <Router>
@@ -18,8 +21,10 @@ function App() {
         {isAddNewExpenseModalOpen && (
           <AddNewExpense
             setIsAddNewExpenseModalOpen={setIsAddNewExpenseModalOpen}
+            setIsCategoryModalOpen={setIsCategoryModalOpen}
           />
         )}
+        <CategoryModal />
       </div>
       <Routes>
         <Route path="/" />

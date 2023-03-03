@@ -1,8 +1,12 @@
 interface AddNewExpenseProps {
   setIsAddNewExpenseModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsCategoryModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const AddNewExpense = ({ setIsAddNewExpenseModalOpen }: AddNewExpenseProps) => {
+const AddNewExpense = ({
+  setIsAddNewExpenseModalOpen,
+  setIsCategoryModalOpen,
+}: AddNewExpenseProps) => {
   return (
     <div className="w-full ml-auto fixed min-h-screen top-0 bg-black bg-opacity-75 z-50">
       <div className="absolute bg-white rounded-mds shadow top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11/12 max-w-3xl">
@@ -22,6 +26,14 @@ const AddNewExpense = ({ setIsAddNewExpenseModalOpen }: AddNewExpenseProps) => {
             <span className="text-xs pl-4 text-gray-500 tracking-wide">
               Category
             </span>
+            {/* {categories.map((category) => {
+              return (
+                <div id={category.name}>
+                  {category.name}
+                  <img src={category.image} />
+                </div>
+              );
+            })} */}
           </div>
           <div className="col-span-1 h-16 border mx-4 rounded-md relative">
             <span className="text-xs pl-4 text-gray-500 tracking-wide">
