@@ -24,7 +24,7 @@ function App() {
             setIsCategoryModalOpen={setIsCategoryModalOpen}
           />
         )}
-        <CategoryModal />
+        {/* <CategoryModal /> */}
       </div>
       <Routes>
         <Route path="/" />
