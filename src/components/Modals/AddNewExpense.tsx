@@ -13,7 +13,7 @@ const AddNewExpense = ({
 }: AddNewExpenseProps) => {
   const [newExpenseInputs, setNewExpenseInputs] = useState({
     amount: 0,
-    category: "",
+    category: "Select a category",
     wallet: "",
     date: new Date().toLocaleDateString() || new Date(),
     note: "",
@@ -38,10 +38,20 @@ const AddNewExpense = ({
               Wallet
             </span>
           </div>
-          <div className="col-span-1 h-16 border mx-4 rounded-md">
+          <div
+            onClick={() => setIsCategoryModalOpen(true)}
+            className="col-span-1 h-16 border mx-4 rounded-md"
+          >
             <span className="text-xs pl-4 text-gray-500 tracking-wide">
               Category
             </span>
+            <div className="block ml-4 mt-1.5 text-base text-gray-400 tracking-wide">
+              {newExpenseInputs.category === "Select a category" ? (
+                <span>?</span>
+              ) : null}
+
+              <span className="pl-2">{newExpenseInputs.category}</span>
+            </div>
           </div>
           <div className="col-span-1 h-16 border mx-4 rounded-md relative flex hover:border-gray-500">
             <label className="text-xs pl-4 pt-1 text-gray-500 tracking-wide w-full h-full">
