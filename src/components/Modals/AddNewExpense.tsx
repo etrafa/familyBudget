@@ -6,6 +6,7 @@ import { INewExpense } from "../../Interfaces/INewExpense";
 interface AddNewExpenseProps {
   setIsAddNewExpenseModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setIsCategoryModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsWalletModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   newExpenseInputs: INewExpense;
   setNewExpenseInputs: React.Dispatch<React.SetStateAction<INewExpense>>;
 }
@@ -15,6 +16,7 @@ const AddNewExpense = ({
   setIsCategoryModalOpen,
   newExpenseInputs,
   setNewExpenseInputs,
+  setIsWalletModalOpen,
 }: AddNewExpenseProps) => {
   const [startDate, setStartDate] = useState(new Date());
 
@@ -28,7 +30,10 @@ const AddNewExpense = ({
           <hr className="mt-4" />
         </div>
         <div className="w-11/12 grid grid-cols-3 justify-center gap-y-4 mx-auto">
-          <div className="col-span-1 h-16 border mx-4 rounded-md">
+          <div
+            onClick={() => setIsWalletModalOpen(true)}
+            className="col-span-1 h-16 border mx-4 rounded-md cursor-pointer"
+          >
             <span className="text-xs pl-4 text-gray-500 tracking-wide">
               Wallet
             </span>
@@ -54,7 +59,7 @@ const AddNewExpense = ({
             </div>
           </div>
           <div className="col-span-1 h-16 border mx-4 rounded-md relative flex hover:border-gray-500">
-            <label className="text-xs pl-4 pt-1 text-gray-500 tracking-wide w-full h-full">
+            <label className="text-xs pl-4 pt-1 text-gray-500 tracking-wide w-full h-full cursor-text">
               Amount
               <input
                 onChange={(e) =>
@@ -88,7 +93,7 @@ const AddNewExpense = ({
           </div>
 
           <div className="col-span-2 h-16 border mx-4 rounded-md relative flex hover:border-gray-500">
-            <label className="text-xs pl-4 pt-1 text-gray-500 tracking-wide w-full h-full">
+            <label className="text-xs pl-4 pt-1 text-gray-500 tracking-wide w-full h-full cursor-text">
               Note
               <input
                 onChange={(e) =>

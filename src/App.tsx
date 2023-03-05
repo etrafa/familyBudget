@@ -5,12 +5,14 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import CategoryModal from "./components/Modals/CategoryModal";
 import { INewExpense } from "./Interfaces/INewExpense";
+import WalletModal from "./components/Modals/WalletModal";
 
 function App() {
   const [isAddNewExpenseModalOpen, setIsAddNewExpenseModalOpen] =
     useState(true);
 
   const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
+  const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
 
   const [newExpenseInputs, setNewExpenseInputs] = useState<INewExpense>({
     amount: 0,
@@ -36,6 +38,7 @@ function App() {
             newExpenseInputs={newExpenseInputs}
             setNewExpenseInputs={setNewExpenseInputs}
             setIsAddNewExpenseModalOpen={setIsAddNewExpenseModalOpen}
+            setIsWalletModalOpen={setIsWalletModalOpen}
             setIsCategoryModalOpen={setIsCategoryModalOpen}
           />
         )}
@@ -45,6 +48,9 @@ function App() {
             setNewExpenseInputs={setNewExpenseInputs}
             setIsCategoryModalOpen={setIsCategoryModalOpen}
           />
+        )}
+        {isWalletModalOpen && (
+          <WalletModal setIsWalletModalOpen={setIsWalletModalOpen} />
         )}
       </div>
       <Routes>
