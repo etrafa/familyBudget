@@ -4,12 +4,24 @@ import Sidebar from "./components/Sidebar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import CategoryModal from "./components/Modals/CategoryModal";
+import { INewExpense } from "./Interfaces/INewExpense";
 
 function App() {
   const [isAddNewExpenseModalOpen, setIsAddNewExpenseModalOpen] =
     useState(true);
 
   const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
+
+  const [newExpenseInputs, setNewExpenseInputs] = useState<INewExpense>({
+    amount: 0,
+    category: {
+      name: "Select a category",
+      image: "",
+    },
+    wallet: "",
+    date: new Date().toLocaleDateString() || new Date(),
+    note: "",
+  });
 
   return (
     <Router>
@@ -20,6 +32,8 @@ function App() {
         </div>
         {isAddNewExpenseModalOpen && (
           <AddNewExpense
+            newExpenseInputs={newExpenseInputs}
+            setNewExpenseInputs={setNewExpenseInputs}
             setIsAddNewExpenseModalOpen={setIsAddNewExpenseModalOpen}
             setIsCategoryModalOpen={setIsCategoryModalOpen}
           />

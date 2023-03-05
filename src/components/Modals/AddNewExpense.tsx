@@ -1,27 +1,22 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { INewExpense } from "../../Interfaces/INewExpense";
 
 interface AddNewExpenseProps {
   setIsAddNewExpenseModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setIsCategoryModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  newExpenseInputs: INewExpense;
+  setNewExpenseInputs: React.Dispatch<React.SetStateAction<INewExpense>>;
 }
 
 const AddNewExpense = ({
   setIsAddNewExpenseModalOpen,
   setIsCategoryModalOpen,
+  newExpenseInputs,
+  setNewExpenseInputs,
 }: AddNewExpenseProps) => {
-  const [newExpenseInputs, setNewExpenseInputs] = useState({
-    amount: 0,
-    category: "Select a category",
-    wallet: "",
-    date: new Date().toLocaleDateString() || new Date(),
-    note: "",
-  });
-
   const [startDate, setStartDate] = useState(new Date());
-
-  console.log(newExpenseInputs);
 
   return (
     <div className="w-full ml-auto fixed min-h-screen top-0 bg-black bg-opacity-75 z-50">
@@ -46,11 +41,11 @@ const AddNewExpense = ({
               Category
             </span>
             <div className="block ml-4 mt-1.5 text-base text-gray-400 tracking-wide">
-              {newExpenseInputs.category === "Select a category" ? (
+              {newExpenseInputs.category.name === "Select a category" ? (
                 <span>?</span>
               ) : null}
 
-              <span className="pl-2">{newExpenseInputs.category}</span>
+              <span className="pl-2">{newExpenseInputs.category.name}</span>
             </div>
           </div>
           <div className="col-span-1 h-16 border mx-4 rounded-md relative flex hover:border-gray-500">
