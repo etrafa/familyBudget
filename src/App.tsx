@@ -21,6 +21,7 @@ function App() {
     wallet: "",
     date: new Date().toLocaleDateString() || new Date(),
     note: "",
+    type: "expense",
   });
 
   return (
@@ -38,7 +39,13 @@ function App() {
             setIsCategoryModalOpen={setIsCategoryModalOpen}
           />
         )}
-        {/* {isCategoryModalOpen && <CategoryModal />} */}
+        {isCategoryModalOpen && (
+          <CategoryModal
+            newExpenseInputs={newExpenseInputs}
+            setNewExpenseInputs={setNewExpenseInputs}
+            setIsCategoryModalOpen={setIsCategoryModalOpen}
+          />
+        )}
       </div>
       <Routes>
         <Route path="/" />

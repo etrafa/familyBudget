@@ -35,16 +35,21 @@ const AddNewExpense = ({
           </div>
           <div
             onClick={() => setIsCategoryModalOpen(true)}
-            className="col-span-1 h-16 border mx-4 rounded-md"
+            className="col-span-1 h-16 border mx-4 rounded-md cursor-pointer"
           >
             <span className="text-xs pl-4 text-gray-500 tracking-wide">
               Category
             </span>
-            <div className="block ml-4 mt-1.5 text-base text-gray-400 tracking-wide">
+            <div className="ml-4 mt-1.5 text-base text-gray-400 tracking-wide flex">
               {newExpenseInputs.category.name === "Select a category" ? (
                 <span>?</span>
-              ) : null}
-
+              ) : (
+                <img
+                  className="w-6 h-6"
+                  src={newExpenseInputs.category.image}
+                  alt={newExpenseInputs.category.name}
+                />
+              )}
               <span className="pl-2">{newExpenseInputs.category.name}</span>
             </div>
           </div>
@@ -65,7 +70,7 @@ const AddNewExpense = ({
             </label>
           </div>
           <div className="col-span-1 h-16 border mx-4 rounded-md relative flex hover:border-gray-500">
-            <label className="text-xs pl-4 pt-1 text-gray-500 tracking-wide w-full h-full">
+            <label className="text-xs pl-4 pt-1 text-gray-500 tracking-wide w-full h-full cursor-pointer">
               Date
               <DatePicker
                 selected={startDate}

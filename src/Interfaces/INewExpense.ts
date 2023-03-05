@@ -4,6 +4,7 @@ export interface INewExpense {
   wallet: string;
   date: Date | string;
   note: string;
+  type: string;
 }
 
 interface ICategory {

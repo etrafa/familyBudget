@@ -3,9 +3,20 @@ import {
   expensesCategories,
   incomeCategories,
 } from "../../categories/categories";
+import { INewExpense } from "../../Interfaces/INewExpense";
 
-const CategoryModal = () => {
-  const [categoryType, setCategoryType] = useState("expense");
+interface CategoryModalProps {
+  setIsCategoryModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setNewExpenseInputs: React.Dispatch<React.SetStateAction<INewExpense>>;
+  newExpenseInputs: INewExpense;
+}
+
+const CategoryModal = ({
+  setIsCategoryModalOpen,
+  setNewExpenseInputs,
+  newExpenseInputs,
+}: CategoryModalProps) => {
+  // const [categoryType, setCategoryType] = useState("expense");
   const [searchTerm, setSearchTerm] = useState("");
 
   return (
@@ -45,9 +56,11 @@ const CategoryModal = () => {
         </form>
         <div className="flex justify-center gap-x-20 mt-4">
           <h4
-            onClick={() => setCategoryType("expense")}
+            onClick={() =>
+              setNewExpenseInputs({ ...newExpenseInputs, type: "expense" })
+            }
             className={
-              categoryType === "expense"
+              newExpenseInputs.type === "expense"
                 ? "text-sm underline underline-offset-8 decoration-[3px] decoration-light-green text-light-green font-medium cursor-pointer"
                 : "text-sm text-gray-400 font-medium cursor-pointer"
             }
@@ -55,9 +68,11 @@ const CategoryModal = () => {
             EXPENSE
           </h4>
           <h4
-            onClick={() => setCategoryType("income")}
+            onClick={() =>
+              setNewExpenseInputs({ ...newExpenseInputs, type: "income" })
+            }
             className={
-              categoryType === "income"
+              newExpenseInputs.type === "income"
                 ? "text-sm underline underline-offset-8 decoration-[3px] decoration-light-green text-light-green font-medium cursor-pointer"
                 : "text-sm text-gray-400 font-medium cursor-pointer"
             }
@@ -68,7 +83,7 @@ const CategoryModal = () => {
         <hr className="w-full mt-1.5" />
         <div className="w-full h-96 overflow-y-scroll mt-4">
           <div className="w-9/12 mx-auto">
-            {categoryType === "expense" ? (
+            {newExpenseInputs.type === "expense" ? (
               <>
                 {expensesCategories
                   .filter((val) => {
@@ -79,17 +94,24 @@ const CategoryModal = () => {
                       return val;
                     }
                   })
-                  .map((category) => {
+                  .map((ctgr) => {
                     return (
-                      <div className="flex w-full justify-start items-center py-2 hover:bg-gray-200 cursor-pointer border-b">
+                      <div
+                        onClick={() => {
+                          setIsCategoryModalOpen(false);
+                          setNewExpenseInputs({
+                            ...newExpenseInputs,
+                            category: { name: ctgr.name, image: ctgr.image },
+                          });
+                        }}
+                        className="flex w-full justify-start items-center py-2 hover:bg-gray-200 cursor-pointer border-b"
+                      >
                         <img
                           className="w-10 h-10"
-                          src={category.image}
-                          alt={category.name}
+                          src={ctgr.image}
+                          alt={ctgr.name}
                         />
-                        <span className="w-32 text-sm pl-4">
-                          {category.name}
-                        </span>
+                        <span className="w-32 text-sm pl-4">{ctgr.name}</span>
                       </div>
                     );
                   })}
@@ -105,17 +127,24 @@ const CategoryModal = () => {
                       return val;
                     }
                   })
-                  .map((category) => {
+                  .map((ctgr) => {
                     return (
-                      <div className="flex w-full justify-start items-center py-2 hover:bg-gray-200 cursor-pointer border-b">
+                      <div
+                        onClick={() => {
+                          setIsCategoryModalOpen(false);
+                          setNewExpenseInputs({
+                            ...newExpenseInputs,
+                            category: { name: ctgr.name, image: ctgr.image },
+                          });
+                        }}
+                        className="flex w-full justify-start items-center py-2 hover:bg-gray-200 cursor-pointer border-b"
+                      >
                         <img
                           className="w-10 h-10"
-                          src={category.image}
-                          alt={category.name}
+                          src={ctgr.image}
+                          alt={ctgr.name}
                         />
-                        <span className="w-32 text-sm pl-4">
-                          {category.name}
-                        </span>
+                        <span className="w-32 text-sm pl-4">{ctgr.name}</span>
                       </div>
                     );
                   })}
