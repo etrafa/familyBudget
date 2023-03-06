@@ -6,6 +6,7 @@ import { useState } from "react";
 import CategoryModal from "./components/Modals/CategoryModal";
 import { INewExpense } from "./Interfaces/INewExpense";
 import WalletModal from "./components/Modals/WalletModal";
+import Login from "./components/Login/Login";
 
 function App() {
   const [isAddNewExpenseModalOpen, setIsAddNewExpenseModalOpen] =
@@ -28,7 +29,8 @@ function App() {
 
   return (
     <Router>
-      <div>
+      <Login />
+      {/* <div>
         <div className="flex">
           <Sidebar />
           <Navbar setIsAddNewExpenseModalOpen={setIsAddNewExpenseModalOpen} />
@@ -52,7 +54,7 @@ function App() {
         {isWalletModalOpen && (
           <WalletModal setIsWalletModalOpen={setIsWalletModalOpen} />
         )}
-      </div>
+      </div> */}
       <Routes>
         <Route path="/" />
       </Routes>
