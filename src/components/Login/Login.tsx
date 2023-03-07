@@ -16,7 +16,7 @@ const Login = () => {
         </div>
       </div>
       <div className="w-full min-h-[50vh] bg-[#EBEBEB] relative">
-        <div className="w-full max-w-2xl rounded-md bg-white shadow-md absolute -top-20 left-1/2 transform -translate-x-1/2 h-[420px]">
+        <div className="w-full max-w-2xl rounded-3xl bg-white shadow-md absolute -top-20 left-1/2 transform -translate-x-1/2 h-[420px]">
           <h2 className="text-center mt-6 font-bold text-3xl tracking-wide text-gray-900">
             Login
           </h2>

@@ -1,5 +1,5 @@
 import AddNewExpense from "./components/Modals/AddNewExpense";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import Sidebar from "./components/Sidebar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState } from "react";
@@ -7,10 +7,11 @@ import CategoryModal from "./components/Modals/CategoryModal";
 import { INewExpense } from "./Interfaces/INewExpense";
 import WalletModal from "./components/Modals/WalletModal";
 import Login from "./components/Login/Login";
+import { ICurrency } from "./Interfaces/ICurrency";
 
 function App() {
   const [isAddNewExpenseModalOpen, setIsAddNewExpenseModalOpen] =
-    useState(true);
+    useState(false);
 
   const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
@@ -27,13 +28,22 @@ function App() {
     type: "expense",
   });
 
+  const [activeCurrency, setActiveCurrency] = useState<ICurrency>({
+    currencyName: "",
+    currencyIMG: "",
+  });
+
   return (
     <Router>
-      <Login />
-      {/* <div>
+      {/* <Login /> */}
+      <div>
         <div className="flex">
           <Sidebar />
-          <Navbar setIsAddNewExpenseModalOpen={setIsAddNewExpenseModalOpen} />
+          <Navbar
+            activeCurrency={activeCurrency}
+            setActiveCurrency={setActiveCurrency}
+            setIsAddNewExpenseModalOpen={setIsAddNewExpenseModalOpen}
+          />
         </div>
         {isAddNewExpenseModalOpen && (
           <AddNewExpense
@@ -54,7 +64,7 @@ function App() {
         {isWalletModalOpen && (
           <WalletModal setIsWalletModalOpen={setIsWalletModalOpen} />
         )}
-      </div> */}
+      </div>
       <Routes>
         <Route path="/" />
       </Routes>
