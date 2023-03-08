@@ -9,6 +9,7 @@ import WalletModal from "./components/Modals/WalletModal";
 import Login from "./components/Login/Login";
 import { ICurrency } from "./Interfaces/ICurrency";
 import Dashboards from "./components/Dashboard/Dashboards";
+import Transactions from "./components/Transactions/Transactions";
 
 function App() {
   const [isAddNewExpenseModalOpen, setIsAddNewExpenseModalOpen] =
@@ -48,6 +49,7 @@ function App() {
             />
             <Routes>
               <Route path="/" element={<Dashboards />} />
+              <Route path="/transactions" element={<Transactions />} />
             </Routes>
           </div>
         </div>
