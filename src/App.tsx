@@ -8,6 +8,7 @@ import { INewExpense } from "./Interfaces/INewExpense";
 import WalletModal from "./components/Modals/WalletModal";
 import Login from "./components/Login/Login";
 import { ICurrency } from "./Interfaces/ICurrency";
+import Dashboards from "./components/Dashboard/Dashboards";
 
 function App() {
   const [isAddNewExpenseModalOpen, setIsAddNewExpenseModalOpen] =
@@ -39,12 +40,20 @@ function App() {
       <div>
         <div className="flex">
           <Sidebar />
-          <Navbar
-            activeCurrency={activeCurrency}
-            setActiveCurrency={setActiveCurrency}
-            setIsAddNewExpenseModalOpen={setIsAddNewExpenseModalOpen}
-          />
+          <div className="flex flex-col w-full">
+            <Navbar
+              activeCurrency={activeCurrency}
+              setActiveCurrency={setActiveCurrency}
+              setIsAddNewExpenseModalOpen={setIsAddNewExpenseModalOpen}
+            />
+            <Routes>
+              <Route path="/" element={<Dashboards />} />
+            </Routes>
+          </div>
         </div>
+
+        {/* MODALS */}
+
         {isAddNewExpenseModalOpen && (
           <AddNewExpense
             newExpenseInputs={newExpenseInputs}
@@ -65,9 +74,6 @@ function App() {
           <WalletModal setIsWalletModalOpen={setIsWalletModalOpen} />
         )}
       </div>
-      <Routes>
-        <Route path="/" />
-      </Routes>
     </Router>
   );
 }
