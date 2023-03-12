@@ -15,19 +15,19 @@ const Login = () => {
           </h1>
         </div>
       </div>
-      <div className="w-full min-h-[50vh] bg-[#EBEBEB] relative">
-        <div className="w-full max-w-2xl rounded-3xl bg-white shadow-md absolute -top-20 left-1/2 transform -translate-x-1/2 h-[420px]">
+      <div className="w-9/12 md:w-full min-h-[50vh] bg-[#EBEBEB] relative mx-auto">
+        <div className="w-full max-w-2xl rounded-3xl bg-white shadow-md absolute -top-20 left-1/2 transform -translate-x-1/2 min-h-[420px]">
           <h2 className="text-center mt-6 font-bold text-3xl tracking-wide text-gray-900">
             Login
           </h2>
-          <div className="flex mt-12">
-            <div className="flex flex-col w-6/12 ">
+          <div className="flex flex-col md:flex-row mt-12 items-center md:items-start">
+            <div className="flex flex-col w-full max-w-xs md:w-6/12">
               <span className="text-center text-sm text-gray-500 tracking-wider">
                 Using social networking accounts
               </span>
               <ConnectWithGoogle />
             </div>
-            <div className="flex flex-col w-6/12 gap-y-4 border-l-2">
+            <div className="flex flex-col w-full max-w-xs md:w-6/12 gap-y-4 border-l-2 mt-12 md:mt-0">
               <span className="text-center text-sm text-gray-500 tracking-wider">
                 Using Family Budget account
               </span>
