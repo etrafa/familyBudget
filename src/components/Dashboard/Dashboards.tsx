@@ -2,9 +2,12 @@ import { useState } from "react";
 import BarIcon from "./BarIcon";
 import Dashboard from "./Dashboard";
 import DoughnutIcon from "./DoughnutIcon";
+import { useAuth } from "../../firebase/firebaseConfig";
 
 const Dashboards = () => {
   const [activeChart, setActiveChart] = useState("pie");
+
+  const currentUser = useAuth();
 
   return (
     <main className="w-full">

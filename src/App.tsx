@@ -37,8 +37,8 @@ function App() {
 
   return (
     <Router>
-      <Login />
-      {/* <div>
+      {/* <Login /> */}
+      <div>
         <div className="flex">
           <Sidebar />
           <div className="flex flex-col w-full">
@@ -52,11 +52,11 @@ function App() {
               <Route path="/transactions" element={<Transactions />} />
             </Routes>
           </div>
-        </div> */}
+        </div>
 
-      {/* MODALS */}
+        {/* MODALS */}
 
-      {/* {isAddNewExpenseModalOpen && (
+        {isAddNewExpenseModalOpen && (
           <AddNewExpense
             newExpenseInputs={newExpenseInputs}
             setNewExpenseInputs={setNewExpenseInputs}
@@ -75,7 +75,7 @@ function App() {
         {isWalletModalOpen && (
           <WalletModal setIsWalletModalOpen={setIsWalletModalOpen} />
         )}
-      </div> */}
+      </div>
     </Router>
   );
 }
